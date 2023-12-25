@@ -3,29 +3,25 @@ import { Sidebar, Menu, MenuItem } from 'react-pro-sidebar';
 import { Link } from 'react-router-dom';
 import { IoPeople } from 'react-icons/io5';
 import { IoIosHome } from 'react-icons/io';
-import { HiOutlineCurrencyDollar } from 'react-icons/hi2';
-import { FcSurvey } from 'react-icons/fc';
 import { IoCreateOutline } from "react-icons/io5";
 import { MdOutlineContactSupport } from "react-icons/md";
-import { MdPaid } from "react-icons/md";
 import AllUsers from './AllUsers/AllUsers';
 import useAdmin from '../../hooks/useAdmin';
-import useUser from '../../Hooks/useUser';
-import useProUser from '../../Hooks/useProUser';
-import useSurveyor from '../../Hooks/useSurveyor';
-import CreateSurveys from '../Surveys/CreateSurveys';
+import useStudent from '../../Hooks/useStudent';
+import StudentDashboard from './StudentDashboard';
+import { MdNotificationsActive } from "react-icons/md";
+import { IoImagesSharp } from "react-icons/io5";
 
 
 const Dashboard = () => {
     const [isAdmin] = useAdmin();
-    const [isUser] = useUser();
-    const [isProUser] = useProUser();
-    const [isSurveyor] = useSurveyor();
-
+    const [isStudent] = useStudent();
+    
     return (
         <div className="mx-24 pt-32 mb-10 md:flex lg:flex gap-20 justify-center">
             <div className="pt-32">
-                <Sidebar>
+                
+            <Sidebar className='fixed top-0 left-0 h-full'>
                     <Menu
                         menuItemStyles={{
                             button: {
@@ -41,52 +37,38 @@ const Dashboard = () => {
                                 <MenuItem component={<Link to="/dashboard" />}>
                                     <div className="flex items-center gap-2">
                                         <IoPeople />
-                                        All Users
+                                        Admin Dashboard
                                     </div>
                                 </MenuItem>
-                                <MenuItem component={<Link to="/" />}>
+                                <MenuItem component={<Link to="/createsurvey" />}>
                                     <div className="flex items-center gap-2">
-                                        <HiOutlineCurrencyDollar />
-                                        Payment History
+                                        <IoCreateOutline />
+                                        Create Notice
                                     </div>
                                 </MenuItem>
                             </>
+                            
                         )}
 
-                        {isUser && (
-                            <MenuItem component={<Link to="/user-dashboard" />}>
+                        {isStudent && !isAdmin && (
+                            <>
+                            <MenuItem component={<Link to="/dashboard" />}>
                                 <div className="flex items-center gap-2">
                                     <IoIosHome />
-                                    User Dashboard
+                                    Student Dashboard
                                 </div>
                             </MenuItem>
-                        )}
-
-                        {isProUser && (
-                            <MenuItem component={<Link to="/pro-user-dashboard" />}>
+                            <MenuItem component={<Link to="/surveys" />}>
                                 <div className="flex items-center gap-2">
-                                    <HiOutlineCurrencyDollar />
-                                    ProUser Dashboard
+                                    <MdNotificationsActive/>
+                                    All Notices
                                 </div>
                             </MenuItem>
+
+                            </>
+                            
                         )}
 
-                        {isSurveyor && (
-                            <div>
-                                <MenuItem component={<Link to="/dashboard" />}>
-                                    <div className="flex items-center gap-2">
-                                        <IoCreateOutline />
-                                        Create Survey
-                                    </div>
-                                </MenuItem>
-                                <MenuItem component={<Link to="/proUser" />}>
-                                    <div className="flex items-center gap-2">
-                                        <MdPaid></MdPaid>
-                                        Upgrade to Pro
-                                    </div>
-                                </MenuItem>
-                            </div>
-                        )}
 
                         <div className="divider divider-info mx-5 opacity-30"></div>
                         <MenuItem component={<Link to="/" />}>
@@ -95,10 +77,10 @@ const Dashboard = () => {
                                 Home
                             </div>
                         </MenuItem>
-                        <MenuItem component={<Link to="/surveys" />}>
+                        <MenuItem component={<Link to="/gallery" />}>
                             <div className="flex items-center gap-2">
-                                <FcSurvey />
-                                Surveys
+                                <IoImagesSharp></IoImagesSharp>
+                                Gallery
                             </div>
                         </MenuItem>
                         <MenuItem component={<Link to=""/>}>
@@ -112,7 +94,8 @@ const Dashboard = () => {
             </div>
             <div>
                 {isAdmin && <AllUsers></AllUsers>}
-                {isSurveyor && <CreateSurveys></CreateSurveys>}
+                {isStudent && !isAdmin && <StudentDashboard></StudentDashboard>}
+                
             </div>
         </div>
     );

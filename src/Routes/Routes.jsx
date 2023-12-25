@@ -5,15 +5,18 @@ import {
 import Main from "../Layout/Main";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import Home from "../Pages/Home/Home";
-import Surveys from "../Pages/Surveys/Surveys";
+import Notice from "../Pages/Surveys/Notice";
 import Login from "../Pages/Login/Login";
 import SignUp from "../Pages/Login/Signup";
 import Dashboard from "../Pages/Dashboard/Dashboard";
 import AllUsers from "../Pages/Dashboard/AllUsers/AllUsers";
 import AdminRoute from "./AdminRoute";
 import PrivateRoute from "./PrivateRoute";
-import CreateSurveys from "../Pages/Surveys/CreateSurveys";
-import ProUser from "../Pages/ProUser/ProUser";
+import NoticeDescription from "../Pages/Surveys/NoticeDescription";
+import CreateNotice from "../Pages/Surveys/CreateNotice";
+import StudentDashboard from "../Pages/Dashboard/StudentDashboard";
+import ContactUs from "../Pages/Home/ContactUs";
+import Gallery from "../Pages/Gallery/Gallery";
 
 
   export const router = createBrowserRouter([
@@ -28,12 +31,12 @@ import ProUser from "../Pages/ProUser/ProUser";
         },
         {
           path: '/surveys',
-          element: <Surveys></Surveys>,
-          loader: () => fetch('https://assignment-12-server-efpbudk56-sjb.vercel.app/survey')
+          element: <PrivateRoute><Notice></Notice></PrivateRoute>,
+          loader: () => fetch('https://test-build-blond.vercel.app/survey')
         },
         {
-          path: '/proUser',
-          element: <ProUser></ProUser>
+          path: '/gallery',
+          element: <Gallery></Gallery>
         },
         {
           path: "/login",
@@ -53,7 +56,20 @@ import ProUser from "../Pages/ProUser/ProUser";
         },
         {
           path: '/createsurvey',
-          element: <CreateSurveys></CreateSurveys>
+          element: <CreateNotice></CreateNotice>
+        },
+        {
+          path: '/notice/:_id',
+          element: <NoticeDescription></NoticeDescription>,
+          loader: () => fetch('https://test-build-blond.vercel.app/survey')
+        },
+        {
+          path: '/studentdashboard',
+          element: <StudentDashboard></StudentDashboard>
+        },
+        {
+          path: 'contactus',
+          element: <ContactUs></ContactUs>
         }
       ]
     },

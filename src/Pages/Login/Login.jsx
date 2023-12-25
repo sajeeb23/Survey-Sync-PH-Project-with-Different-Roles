@@ -111,14 +111,14 @@ const Login = () => {
                                 </label>
                             </div>
                             <div className="form-control mt-6">
-                                <button className="btn text-white bg-[#08a0e6]">Login</button>
+                                <button className="btn text-white bg-green-600">Login</button>
                             </div>
                         </form>
 
                         <button onClick={handleGoogleSignIn} className="mx-8 mb-2 btn btn-google">
                             <FcGoogle></FcGoogle>Login with Google
                         </button>
-                        <p className="font-medium mx-auto mb-4">Do not have an account? <Link to="/signup" className="text-blue-700">Sign Up</Link></p>
+                        <p className="font-medium mx-auto mb-4">Do not have an account? <Link to="/signup" className="text-green-700">Sign Up</Link></p>
 
                     </div>
                 </div>

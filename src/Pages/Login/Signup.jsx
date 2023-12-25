@@ -117,13 +117,13 @@ const SignUp = () => {
               />
             </div>
             <div className="form-control mt-6">
-              <button className="btn text-white bg-[#08a0e6]">Sign Up</button>
+              <button className="btn text-white bg-green-600">Sign Up</button>
             </div>
           </form>
 
           <p className="mx-auto mb-4 font-medium">
             Already have an account? 
-            <Link to="/login" className="text-blue-700">
+            <Link to="/login" className="text-green-700">
                Login
             </Link>
           </p>

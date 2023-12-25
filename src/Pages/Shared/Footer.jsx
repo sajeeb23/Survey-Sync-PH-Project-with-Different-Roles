@@ -4,8 +4,8 @@ const Footer = () => {
     <div>
       <footer className="footer p-10 bg-neutral text-neutral-content">
         <aside>
-          <img src="https://i.ibb.co/S6wcs70/pngwing-com-43.png" className="w-1/6" alt="" />
-          <p>ACME Industries Ltd.<br />Providing reliable tech since 1992</p>
+          <img src="https://i.ibb.co/G0pFNsq/logo-1.png" className="w-1/6" alt="" />
+          <p>Moulvibazar Polytechnic Institute<br />Moulvibazar, Sylhet || 2010</p>
         </aside>
         <nav>
           <header className="footer-title">Social</header>

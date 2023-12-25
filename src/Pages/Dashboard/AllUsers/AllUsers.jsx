@@ -8,6 +8,7 @@ import { useState } from 'react';
 import 'aos/dist/aos.css';
 import aos from 'aos';
 import { useEffect } from 'react';
+import UsersCount from './UsersCount';
 
 
 
@@ -22,11 +23,11 @@ const AllUsers = () => {
     const { data: users = [], refetch } = useQuery({
         queryKey: ['users'],
         queryFn: async () => {
-            const res = await axios.get('https://assignment-12-server-efpbudk56-sjb.vercel.app/users');
+            const res = await axios.get('https://test-build-blond.vercel.app/users');
             return res.data;
         }
     });
-    
+
 
     const handleRoleChange = (user) => {
         if (!selectedRoles[user._id]) {
@@ -39,30 +40,30 @@ const AllUsers = () => {
         }
 
         axios
-        .patch(`https://assignment-12-server-efpbudk56-sjb.vercel.app/users/admin/${user._id}`, { role: selectedRoles[user._id] })
-        .then((res) => {
-            if (res.data.modifiedCount > 0) {
-                refetch();
+            .patch(`https://test-build-blond.vercel.app/users/admin/${user._id}`, { role: selectedRoles[user._id] })
+            .then((res) => {
+                if (res.data.modifiedCount > 0) {
+                    refetch();
+                    Swal.fire({
+                        title: 'Role Changed!',
+                        text: `User role has been changed to ${selectedRoles[user._id]}`,
+                        icon: 'success',
+                    });
+                }
+            })
+            .catch((error) => {
+                console.error('Error changing user role:', error);
+
+
+                console.log(error);
+
                 Swal.fire({
-                    title: 'Role Changed!',
-                    text: `User role has been changed to ${selectedRoles[user._id]}`,
-                    icon: 'success',
+                    title: 'Error',
+                    text: 'Failed to change user role',
+                    icon: 'error',
                 });
-            }
-        })
-        .catch((error) => {
-            console.error('Error changing user role:', error);
-
-           
-            console.log(error);
-
-            Swal.fire({
-                title: 'Error',
-                text: 'Failed to change user role',
-                icon: 'error',
             });
-        });
-};
+    };
 
     const handleDeleteUser = (user) => {
         Swal.fire({
@@ -76,7 +77,7 @@ const AllUsers = () => {
         }).then((result) => {
             if (result.isConfirmed) {
                 axios
-                    .delete(`https://assignment-12-server-efpbudk56-sjb.vercel.app/users/${user._id}`)
+                    .delete(`https://test-build-blond.vercel.app/users/${user._id}`)
                     .then((res) => {
                         if (res.data.deletedCount > 0) {
                             refetch();
@@ -103,7 +104,11 @@ const AllUsers = () => {
                 <hr className='my-2 mx-40 opacity-50' />
                 <h1 className="text-2xl font-semibold mt-2">Total Users: {users.length}</h1>
             </div>
+            <div>
+                <UsersCount></UsersCount>
+            </div>
             <div className="overflow-x-auto mt-12">
+                <h1 className="text-center text-2xl font-semibold mb-8"><span className='font-bold'>Manage Users</span> - Change Roles or Remove User</h1>
                 <table className="table">
                     {/* head */}
                     <thead>
@@ -117,8 +122,8 @@ const AllUsers = () => {
                     </thead>
                     <tbody>
                         {users.map((user, index) => (
-                             <tr key={user._id} data-aos="fade" data-aos-duration="1000" data-aos-delay={index * 100}>
-                                
+                            <tr key={user._id} data-aos="fade" data-aos-duration="1000" data-aos-delay={index * 100}>
+
                                 <th>{index + 1}</th>
                                 <td>
                                     <div className="flex items-center gap-3">
@@ -138,7 +143,7 @@ const AllUsers = () => {
                                 <td>{user.email}</td>
                                 <td>
                                     <div className="flex items-center gap-3">
-                                        <div className="relative w-3/5">
+                                        <div className="relative w-40">
                                             <select
                                                 value={selectedRoles[user._id] || ''}
                                                 onChange={(e) =>
@@ -150,18 +155,17 @@ const AllUsers = () => {
                                                 className="form-select font-semibold block w-full pr-10 py-2 text-base leading-6 border-gray-300 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 sm:text-sm sm:leading-5"
                                             >
                                                 <option value="">{user.role ? user.role.toUpperCase() : 'Select Role'}</option>
-                                                <option value="admin">Admin</option>
-                                                <option value="user">User</option>
-                                                <option value="proUser">ProUser</option>
-                                                <option value="surveyor">Surveyor</option>
+                                                <option value="admin">ADMIN</option>
+                                                <option value="student">STUDENT</option>
+
                                             </select>
                                             <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-                                               
+
                                             </div>
                                         </div>
                                         <button
                                             onClick={() => handleRoleChange(user)}
-                                            className="btn btn-primary btn-xs"
+                                            className="btn bg-red-700 text-white btn-sm"
                                         >
                                             Change Role
                                         </button>

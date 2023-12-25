@@ -31,15 +31,15 @@ const Navbar = () => {
                         <label tabIndex={0} className="btn btn-ghost lg:hidden">
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
                         </label>
-                        <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-[#08a0e6] rounded-box w-52">
+                        <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-green-600 rounded-box w-52">
                         <NavLink
                             to="/"
                             className={({ isActive, isPending }) =>
                                 isPending
                                     ? "pending"
                                     : isActive
-                                        ? "bg-[#010102] text-white py-2 px-3"
-                                        : "bg-[#08a0e6] hover:text-gray-500 hover:underline text-white py-2 px-3"
+                                        ? "bg-green-700 text-white py-2 px-3"
+                                        : "bg-green-600 hover:text-gray-500 hover:underline text-white py-2 px-3"
                             }
                         >
                             Home
@@ -51,24 +51,24 @@ const Navbar = () => {
                                 isPending
                                     ? "pending"
                                     : isActive
-                                        ? "bg-[#010102] text-white py-2 px-3"
-                                        : "bg-[#08a0e6] hover:text-gray-500 hover:underline text-white py-2 px-3"
+                                        ? "bg-green-700 text-white py-2 px-3"
+                                        : "bg-green-600 hover:text-gray-500 hover:underline text-white py-2 px-3"
                             }
                         >
-                           Surveys
+                           Notice
                         </NavLink>
 
                         <NavLink
-                            to="/proUser"
+                            to="/gallery"
                             className={({ isActive, isPending }) =>
                                 isPending
                                     ? "pending"
                                     : isActive
-                                        ? "bg-[#010102] text-white py-2 px-3"
-                                        : "bg-[#08a0e6] hover:text-gray-500 hover:underline text-white py-2 px-3"
+                                        ? "bg-green-700 text-white py-2 px-3"
+                                        : "bg-green-600 hover:text-gray-500 hover:underline text-white py-2 px-3"
                             }
                         >
-                            Pro Membership
+                            Gallery
                         </NavLink>
                         <NavLink
                             to="/dashboard"
@@ -76,8 +76,8 @@ const Navbar = () => {
                                 isPending
                                     ? "pending"
                                     : isActive
-                                        ? "bg-[#010102] text-white py-2 px-3"
-                                        : "bg-[#08a0e6] hover:text-gray-500 hover:underline text-white py-2 px-3"
+                                        ? "bg-green-700 text-white py-2 px-3"
+                                        : "bg-green-600 hover:text-gray-500 hover:underline text-white py-2 px-3"
                             }
                         >
                             Dashboard
@@ -85,9 +85,9 @@ const Navbar = () => {
                         
                         </ul>
                     </div>
-                    <Link className="flex justify-center items-center gap-2" to={'/'}>
-                        <img src="https://i.ibb.co/S6wcs70/pngwing-com-43.png" className="w-8 lg:w-1/12" alt="" />
-                        <a className="normal-case text-sm lg:text-xl font-bold">Survey<span className="text-sky-400">Sync</span></a>
+                    <Link className="flex justify-center items-center gap-1" to={'/'}>
+                        <img src="https://i.ibb.co/G0pFNsq/logo-1.png" className=" w-8 lg:w-10" alt="" />
+                        <a className="normal-case text-sm lg:text-xl font-bold text-green-600">MPI</a>
                     </Link>
                 </div>
                 <div className="navbar-center hidden lg:flex">
@@ -98,8 +98,8 @@ const Navbar = () => {
                                 isPending
                                     ? "pending"
                                     : isActive
-                                        ? "bg-[#110e08] text-white py-3 px-4"
-                                        : "bg-[#08a0e6] hover:text-gray-500 hover:underline text-white py-3 px-4"
+                                        ? "bg-green-700 text-white py-3 px-4"
+                                        : "bg-green-600 hover:text-gray-500 hover:underline text-white py-3 px-4"
                             }
                         >
                             Home
@@ -111,24 +111,24 @@ const Navbar = () => {
                                 isPending
                                     ? "pending"
                                     : isActive
-                                        ? "bg-[#110e08] text-white py-3 px-4"
-                                        : "bg-[#08a0e6] hover:text-gray-500 hover:underline text-white py-3 px-4"
+                                        ? "bg-green-700 text-white py-3 px-4"
+                                        : "bg-green-600 hover:text-gray-500 hover:underline text-white py-3 px-4"
                             }
                         >
-                            Surveys
+                            Notice
                         </NavLink>
 
                         <NavLink
-                            to="/proUser"
+                            to="/gallery"
                             className={({ isActive, isPending }) =>
                                 isPending
                                     ? "pending"
                                     : isActive
-                                        ? "bg-[#110e08] text-white py-3 px-4"
-                                        : "bg-[#08a0e6] hover:text-gray-500 hover:underline text-white py-3 px-4"
+                                        ? "bg-green-700 text-white py-3 px-4"
+                                        : "bg-green-600 hover:text-gray-500 hover:underline text-white py-3 px-4"
                             }
                         >
-                            Pro Membership
+                            Gallery
                         </NavLink>
                         <NavLink
                             to="/dashboard"
@@ -136,8 +136,8 @@ const Navbar = () => {
                                 isPending
                                     ? "pending"
                                     : isActive
-                                        ? "bg-[#110e08] text-white py-3 px-4"
-                                        : "bg-[#08a0e6] hover:text-gray-500 hover:underline text-white py-3 px-4"
+                                        ? "bg-green-700 text-white py-3 px-4"
+                                        : "bg-green-600 hover:text-gray-500 hover:underline text-white py-3 px-4"
                             }
                         >
                            Dashboard
@@ -163,11 +163,11 @@ const Navbar = () => {
 
 
                     {user ? (
-                        <Link className="btn bg-[#08a0e6] h-2 text-white" onClick={handleSignOut}><RiLogoutCircleLine></RiLogoutCircleLine>LogOut</Link>
+                        <Link className="btn bg-red-700 h-2 text-white" onClick={handleSignOut}><RiLogoutCircleLine></RiLogoutCircleLine>LogOut</Link>
                     ) : (
                         <Link
                             to="/login"
-                            className="btn bg-[#08a0e6] h-2 text-white"
+                            className="btn bg-red-700 h-2 text-white"
                         >
                             <AiOutlineLogin></AiOutlineLogin>Login
                         </Link>
